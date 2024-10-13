@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 5f; // ジャンプ力
     public float wallJumpForce = 5f; // 壁ジャンプ力
     public float mouseSensitivity = 100f; // マウス感度
+    public Rigidbody handRigidbody; // 手のRigidbody
+    public float swingForce = 10f; // 手を揺らす力
 
     private CharacterController controller;
     private Vector3 moveDirection;
@@ -81,6 +83,13 @@ public class PlayerMovement : MonoBehaviour
         {
             moveDirection.x = Mathf.Lerp(moveDirection.x, 0, Time.deltaTime * 5f);
             moveDirection.z = Mathf.Lerp(moveDirection.z, 0, Time.deltaTime * 5f);
+        }
+
+        // マウスボタンの長押しで手を持ち上げる処理
+        if (Input.GetMouseButton(0)) // 左クリックを押している間
+        {
+            Vector3 upwardForce = Vector3.up * swingForce;
+            handRigidbody.AddForce(upwardForce, ForceMode.Force);
         }
     }
 
