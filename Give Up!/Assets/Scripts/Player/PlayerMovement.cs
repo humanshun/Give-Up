@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f; // 移動速度
     public float jumpForce = 5f; // ジャンプ力
-    public float horizontalJumpMultiplier = 3f; // 水平方向のジャンプ力を増加させるための乗数
+    public float horizontalJumpMultiplier = 20f; // 水平方向のジャンプ力を増加させるための乗数
     public float verticalJumpForce = 4f; // 上方向のジャンプ力
     public float mouseSensitivity = 100f; // マウス感度
     public int numberOfRays = 36; // レイの数（360度に均等に配置）
