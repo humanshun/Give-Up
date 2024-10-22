@@ -94,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
             
             if (Physics.Raycast(rayOrigin, direction, out hit, rayLength))
             {
-                Debug.Log($"レイが当たったオブジェクト: {hit.collider.name} (方向: {direction})");
+                // Debug.Log($"レイが当たったオブジェクト: {hit.collider.name} (方向: {direction})");
                 
                 // 当たった方向を合計
                 totalDirection += hit.normal; // 壁の法線を合計
@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                Debug.Log($"方向: {direction} に何もありません。");
+                // Debug.Log($"方向: {direction} に何もありません。");
             }
         }
 

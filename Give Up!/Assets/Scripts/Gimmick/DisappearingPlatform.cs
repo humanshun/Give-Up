@@ -6,6 +6,10 @@ public class DisappearingPlatform : MonoBehaviour
     private Renderer platformRenderer;
     private Collider platformCollider;
 
+    // 待機時間を調整できるようにpublic float変数を追加
+    public float timeToDisappear = 5f;
+    public float timeToReappear = 20f;
+
     void Start()
     {
         platformRenderer = GetComponent<Renderer>();
@@ -22,13 +26,13 @@ public class DisappearingPlatform : MonoBehaviour
 
     private IEnumerator DisappearAndReappear()
     {
-        // 5秒後に非表示にする
-        yield return new WaitForSeconds(5f);
+        // timeToDisappearの秒数後に非表示にする
+        yield return new WaitForSeconds(timeToDisappear);
         platformRenderer.enabled = false;
         platformCollider.enabled = false;
 
-        // 20秒後に再表示する
-        yield return new WaitForSeconds(20f);
+        // timeToReappearの秒数後に再表示する
+        yield return new WaitForSeconds(timeToReappear);
         platformRenderer.enabled = true;
         platformCollider.enabled = true;
     }
