@@ -12,9 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public int numberOfRays = 36; // レイの数（360度に均等に配置）
     public Color rayColor = Color.red; // レイの色
 
-    private CharacterController controller;
+    private Rigidbody rb;
     private Vector3 moveDirection;
-    private float gravity = -9.81f;
     private Transform cameraTransform;
     private float xRotation;
     private bool isGrounded;
@@ -24,8 +23,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
         cameraTransform = Camera.main.transform;
+        rb.freezeRotation = true; // プレイヤーの回転を物理演算で防ぐ
     }
 
     void Update()
@@ -44,35 +44,25 @@ public class PlayerMovement : MonoBehaviour
         float moveZ = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
-        controller.Move(move * moveSpeed * Time.deltaTime);
+        moveDirection = move * moveSpeed;
 
         // 地面に接しているかの判定
         isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundMask);
 
-        // 重力とジャンプ処理
-        if (isGrounded && moveDirection.y < 0)
-        {
-            moveDirection.y = -2f; // 地面に接しているときはy方向の速度をリセット
-        }
-
+        // ジャンプ処理
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            moveDirection.y = Mathf.Sqrt(jumpForce * -2f * gravity); // 通常ジャンプ
-        }
-
-        // 重力の影響を受ける
-        moveDirection.y += gravity * Time.deltaTime;
-        controller.Move(moveDirection * Time.deltaTime);
-
-        // ジャンプ後、X-Z方向の力を減衰させる
-        if (!Input.GetButton("Jump"))
-        {
-            moveDirection.x = Mathf.Lerp(moveDirection.x, 0, Time.deltaTime * 5f);
-            moveDirection.z = Mathf.Lerp(moveDirection.z, 0, Time.deltaTime * 5f);
+            rb.velocity = new Vector3(rb.velocity.x, Mathf.Sqrt(jumpForce * 2f * Mathf.Abs(Physics.gravity.y)), rb.velocity.z); // ジャンプ
         }
 
         // プレイヤーの周り360度にレイを発射する
         ShootRays(move);
+    }
+
+    void FixedUpdate()
+    {
+        // Rigidbodyを使ってプレイヤーを移動
+        rb.MovePosition(rb.position + moveDirection * Time.fixedDeltaTime);
     }
 
     void ShootRays(Vector3 inputDirection)
@@ -94,15 +84,9 @@ public class PlayerMovement : MonoBehaviour
             
             if (Physics.Raycast(rayOrigin, direction, out hit, rayLength))
             {
-                // Debug.Log($"レイが当たったオブジェクト: {hit.collider.name} (方向: {direction})");
-                
                 // 当たった方向を合計
                 totalDirection += hit.normal; // 壁の法線を合計
                 hitCount++; // ヒットカウントを増やす
-            }
-            else
-            {
-                // Debug.Log($"方向: {direction} に何もありません。");
             }
         }
 
@@ -119,9 +103,9 @@ public class PlayerMovement : MonoBehaviour
                 averageDirection.y = 0; // y成分を0にすることで上方向の成分を排除
 
                 // ジャンプする方向を逆にする
-                moveDirection = averageDirection + inputDirection.normalized; // 平均方向と入力方向を合成
-                moveDirection = moveDirection.normalized * horizontalJumpMultiplier; // 合成した方向を正規化し、横方向の力を加える
-                moveDirection.y = verticalJumpForce; // 上方向のジャンプ力を設定
+                Vector3 jumpDirection = averageDirection + inputDirection.normalized; // 平均方向と入力方向を合成
+                jumpDirection = jumpDirection.normalized * horizontalJumpMultiplier; // 合成した方向を正規化し、横方向の力を加える
+                rb.velocity = new Vector3(jumpDirection.x, verticalJumpForce, jumpDirection.z); // ジャンプ方向に力を加える
             }
         }
     }
