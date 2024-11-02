@@ -6,67 +6,97 @@ using UnityEngine;
 public class Grab : MonoBehaviour
 {
     public Animator animator;
-    GameObject grabbedObj;
     public Rigidbody rb;
-    public int isLeftorRight;
-    public bool alreadyGrabbing = false;
+    public int isLeftorRight; // 左手か右手かのボタンインデックス（0 = 左手、1 = 右手）
+    private GameObject grabbedObj; // 掴んでいるオブジェクト
+    private FixedJoint leftHandJoint; // 左手のFixedJoint
+    private FixedJoint rightHandJoint; // 右手のFixedJoint
 
-    void Start ()
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
-    void Update ()
-    {
-        if (Input.GetMouseButtonDown(isLeftorRight))
-        {
-            if (isLeftorRight == 0)
-            {
-                animator.SetBool("isLeftHandUp", true);
-            }
-            else if (isLeftorRight == 1)
-            {
-                animator.SetBool("isRightHandUp", true);
-            }
 
-            if (grabbedObj != null && grabbedObj.GetComponent<FixedJoint>() == null) // ここで確認
+    void Update()
+    {
+        // 左手で掴む操作
+        if (isLeftorRight == 0 && Input.GetMouseButton(0))
+        {
+            animator.SetBool("isLeftHandUp", true);
+
+            // 左手が掴んでいるオブジェクトに FixedJoint がない場合に掴む
+            if (grabbedObj != null && leftHandJoint == null)
             {
-                FixedJoint fj = grabbedObj.AddComponent<FixedJoint>();
-                fj.connectedBody = rb;
-                fj.breakForce = 9001;
+                leftHandJoint = grabbedObj.AddComponent<FixedJoint>();
+                leftHandJoint.connectedBody = rb;
+                leftHandJoint.breakForce = 9001;
             }
         }
-        else if (Input.GetMouseButtonUp(isLeftorRight))
+        else if (isLeftorRight == 0 && Input.GetMouseButtonUp(0))
         {
-            if (isLeftorRight == 0)
-            {
-                animator.SetBool("isLeftHandUp", false);
-            }
-            else if (isLeftorRight == 1)
-            {
-                animator.SetBool("isRightHandUp", false);
-            }
+            animator.SetBool("isLeftHandUp", false);
 
-            if (grabbedObj != null)
+            // 左手のFixedJointを削除
+            if (leftHandJoint != null)
             {
-                Destroy(grabbedObj.GetComponent<FixedJoint>());
+                Destroy(leftHandJoint);
+                leftHandJoint = null;
             }
+        }
 
-            grabbedObj = null;
+        // 右手で掴む操作
+        if (isLeftorRight == 1 && Input.GetMouseButton(1))
+        {
+            animator.SetBool("isRightHandUp", true);
+
+            // 右手が掴んでいるオブジェクトに FixedJoint がない場合に掴む
+            if (grabbedObj != null && rightHandJoint == null)
+            {
+                rightHandJoint = grabbedObj.AddComponent<FixedJoint>();
+                rightHandJoint.connectedBody = rb;
+                rightHandJoint.breakForce = 9001;
+            }
+        }
+        else if (isLeftorRight == 1 && Input.GetMouseButtonUp(1))
+        {
+            animator.SetBool("isRightHandUp", false);
+
+            // 右手のFixedJointを削除
+            if (rightHandJoint != null)
+            {
+                Destroy(rightHandJoint);
+                rightHandJoint = null;
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        // "Item"タグが付いた物体に触れた場合
         if (other.gameObject.CompareTag("Item"))
         {
-            grabbedObj = other.gameObject;
+            grabbedObj = other.gameObject; // 同じオブジェクトを掴む対象として設定
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
+        // "Item"タグが付いた物体から離れた場合
         if (other.gameObject.CompareTag("Item"))
         {
-            grabbedObj = null;
+            if (leftHandJoint != null)
+            {
+                Destroy(leftHandJoint); // 左手のFixedJointを削除
+                leftHandJoint = null;
+            }
+
+            if (rightHandJoint != null)
+            {
+                Destroy(rightHandJoint); // 右手のFixedJointを削除
+                rightHandJoint = null;
+            }
+
+            grabbedObj = null; // 掴んでいるオブジェクトをクリア
         }
     }
 }
