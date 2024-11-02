@@ -72,17 +72,14 @@ public class Grab : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // "Item"タグが付いた物体に触れた場合
-        if (other.gameObject.CompareTag("Item"))
-        {
-            grabbedObj = other.gameObject; // 同じオブジェクトを掴む対象として設定
-        }
+        // 当たったオブジェクトを掴む対象として設定
+        grabbedObj = other.gameObject;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        // "Item"タグが付いた物体から離れた場合
-        if (other.gameObject.CompareTag("Item"))
+        // 離れたときに掴んでいるオブジェクトを解除
+        if (other.gameObject == grabbedObj)
         {
             if (leftHandJoint != null)
             {
