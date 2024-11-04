@@ -195,7 +195,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6975882148521958331}
   - component: {fileID: 943120505344814309}
-  - component: {fileID: 6295411117146287197}
   - component: {fileID: 4628255818558542595}
   m_Layer: 0
   m_Name: Player2
@@ -244,30 +243,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6295411117146287197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 844134602415142451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d07856963a9e86448890ecd22a6fc761, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 5
-  horizontalJumpMultiplier: 20
-  verticalJumpForce: 4
-  mouseSensitivity: 100
-  numberOfRays: 36
-  rayColor: {r: 1, g: 0, b: 0, a: 1}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  groundCheckRadius: 0.26
-  groundCheck: {fileID: 3942345701419266228}
 --- !u!143 &4628255818558542595
 CharacterController:
   m_ObjectHideFlags: 0
