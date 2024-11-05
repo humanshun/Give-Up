@@ -7,7 +7,7 @@ public class Hammer : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Controller controllerScript = other.GetComponent<Controller>();
+            PlayerController controllerScript = other.GetComponent<PlayerController>();
             if (controllerScript != null)
             {
                 Vector3 knockbackDirection = (other.transform.position - transform.position).normalized;
