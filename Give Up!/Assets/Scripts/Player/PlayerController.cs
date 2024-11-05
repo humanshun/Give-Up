@@ -72,7 +72,6 @@ public class PlayerController : MonoBehaviour
 
     public void Knockback(Vector3 direction, float force)
     {
-        moveDirection += direction * force; // ノックバック方向と強さを合成
-        moveDirection.y = Mathf.Max(moveDirection.y, force * 0.5f); // Y軸方向にも持ち上げるように設定
+        hips.AddForce(direction.normalized * force, ForceMode.Impulse);
     }
 }
