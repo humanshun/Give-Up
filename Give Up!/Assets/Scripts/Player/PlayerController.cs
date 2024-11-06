@@ -69,9 +69,4 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
-    public void Knockback(Vector3 direction, float force)
-    {
-        hips.AddForce(direction.normalized * force, ForceMode.Impulse);
-    }
 }
