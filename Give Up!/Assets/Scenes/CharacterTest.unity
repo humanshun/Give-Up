@@ -2893,6 +2893,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3080058734356280952, guid: 5504705aab4816c458dfc0be6103b442, type: 3}
+      propertyPath: m_ProjectionAngle
+      value: 180.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3080058734356280952, guid: 5504705aab4816c458dfc0be6103b442, type: 3}
       propertyPath: m_LinearLimit.limit
       value: 0
       objectReference: {fileID: 0}
@@ -2943,6 +2947,10 @@ PrefabInstance:
     - target: {fileID: 4344813209619819309, guid: 5504705aab4816c458dfc0be6103b442, type: 3}
       propertyPath: m_ProjectionMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344813209619819309, guid: 5504705aab4816c458dfc0be6103b442, type: 3}
+      propertyPath: m_ProjectionAngle
+      value: 180.1
       objectReference: {fileID: 0}
     - target: {fileID: 4344813209619819309, guid: 5504705aab4816c458dfc0be6103b442, type: 3}
       propertyPath: m_LinearLimit.limit

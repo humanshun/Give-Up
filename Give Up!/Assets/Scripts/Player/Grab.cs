@@ -77,25 +77,4 @@ public class Grab : MonoBehaviour
         // 当たったオブジェクトを掴む対象として設定
         grabbedObj = other.gameObject;
     }
-
-    // private void OnTriggerExit(Collider other)
-    // {
-    //     // 離れたときに掴んでいるオブジェクトを解除
-    //     if (other.gameObject == grabbedObj)
-    //     {
-    //         if (leftHandJoint != null)
-    //         {
-    //             Destroy(leftHandJoint); // 左手のFixedJointを削除
-    //             leftHandJoint = null;
-    //         }
-
-    //         if (rightHandJoint != null)
-    //         {
-    //             Destroy(rightHandJoint); // 右手のFixedJointを削除
-    //             rightHandJoint = null;
-    //         }
-
-    //         grabbedObj = null; // 掴んでいるオブジェクトをクリア
-    //     }
-    // }
 }
