@@ -8,10 +8,10 @@ public class JumpPad : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerMovement playerMovement = other.GetComponent<PlayerMovement>();
-            if (playerMovement != null)
+            PlayerController playerController = other.GetComponent<PlayerController>();
+            if (playerController != null)
             {
-                playerMovement.jumpForce = boostedJumpForce; // ジャンプ力を上げる
+                playerController.jumpForce = boostedJumpForce; // ジャンプ力を上げる
             }
         }
     }
@@ -20,10 +20,10 @@ public class JumpPad : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerMovement playerMovement = other.GetComponent<PlayerMovement>();
-            if (playerMovement != null)
+            PlayerController playerController = other.GetComponent<PlayerController>();
+            if (playerController != null)
             {
-                playerMovement.jumpForce = 5f; // 通常のジャンプ力に戻す（5はデフォルト値）
+                playerController.jumpForce = 5f; // 通常のジャンプ力に戻す（5はデフォルト値）
             }
         }
     }
