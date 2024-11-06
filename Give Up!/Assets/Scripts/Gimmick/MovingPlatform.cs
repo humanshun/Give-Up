@@ -32,20 +32,4 @@ public class MovingPlatform : MonoBehaviour
             }
         }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            other.transform.SetParent(transform); // プレイヤーを床の子オブジェクトに設定
-        }
-    }
-
-    private void OnTriggerExit(Collider other) // 修正されたメソッド名
-    {
-        if (other.CompareTag("Player"))
-        {
-            other.transform.SetParent(null); // プレイヤーを床から離す
-        }
-    }
 }
