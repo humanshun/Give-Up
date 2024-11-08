@@ -23,7 +23,7 @@ public class JumpPad : MonoBehaviour
             PlayerController playerController = other.GetComponent<PlayerController>();
             if (playerController != null)
             {
-                playerController.jumpForce = 5f; // 通常のジャンプ力に戻す（5はデフォルト値）
+                playerController.jumpForce = 6000f; // 通常のジャンプ力に戻す（5はデフォルト値）
             }
         }
     }
