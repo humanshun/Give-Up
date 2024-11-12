@@ -7,13 +7,17 @@ public class GrabRightHand : MonoBehaviour
 {
     public Animator animator;
     public Rigidbody rb;
+    public Rigidbody hipRb;
     private GameObject grabbedObj; // 掴んでいるオブジェクト
     private FixedJoint rightHandJoint; // 右手のFixedJoint
     private bool buttonDown;
+    private PlayerController playerController;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        // PlayerControllerの参照をFindObjectOfTypeで取得
+        playerController = FindObjectOfType<PlayerController>();
     }
 
     void Update()
@@ -27,6 +31,7 @@ public class GrabRightHand : MonoBehaviour
             // 右手が掴んでいるオブジェクトに FixedJoint がない場合に掴む
             if (grabbedObj != null && rightHandJoint == null)
             {
+                playerController.grabRightHand = true;
                 rightHandJoint = grabbedObj.AddComponent<FixedJoint>();
                 rightHandJoint.connectedBody = rb;
                 rightHandJoint.breakForce = 9001;
@@ -40,6 +45,7 @@ public class GrabRightHand : MonoBehaviour
             // 右手のFixedJointを削除
             if (rightHandJoint != null)
             {
+                playerController.grabRightHand = false;
                 Destroy(rightHandJoint);
                 grabbedObj = null; // 掴んでいるオブジェクトをクリア
                 rightHandJoint = null;

@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     public Vector3 moveDirection;
 
     public Rigidbody hips;
+
+    public bool cameraY;
+    public bool grabLeftHand;
+    public bool grabRightHand;
     public bool isGrounded;
     private bool canJump = true;
 
@@ -72,6 +76,14 @@ public class PlayerController : MonoBehaviour
             }
         }
         
+        ClimbUp();
+    }
+    public void ClimbUp()
+    {
+        if (cameraY && grabLeftHand && grabRightHand)
+        {
+            hips.AddForce(0, 300f, 0);
+        }
     }
     private IEnumerator JumpCooldown()
     {

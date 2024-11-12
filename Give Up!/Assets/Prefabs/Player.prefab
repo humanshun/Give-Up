@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d12d9effd77be4ba38a2fcb1a6a591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotatoinSpeed: 7
+  rotationSpeed: 3
   root: {fileID: 3383065772202113521}
   stomachOffset: 0
   hipJoint: {fileID: 6131838935160570986}
@@ -1067,6 +1067,9 @@ MonoBehaviour:
   jumpForce: 6000
   moveDirection: {x: 0, y: 0, z: 0}
   hips: {fileID: 2921541125959489700}
+  cameraY: 0
+  grabLeftHand: 0
+  grabRightHand: 0
   isGrounded: 0
 --- !u!135 &4064392172821963102
 SphereCollider:
@@ -2101,7 +2104,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7320630188463322378}
-  - component: {fileID: 8313076384232024724}
   - component: {fileID: 7424733772262492761}
   - component: {fileID: 207990338490546287}
   - component: {fileID: 1361663314588625378}
@@ -2130,19 +2132,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1100988830446730906}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8313076384232024724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3732895297533263561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c677e1d39eefa6345ad8d1e96e8bfde4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
 --- !u!33 &7424733772262492761
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3269,6 +3258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   rb: {fileID: 0}
+  hipRb: {fileID: 0}
 --- !u!33 &6299359520843216936
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3520,6 +3510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   rb: {fileID: 0}
+  hipRb: {fileID: 0}
 --- !u!33 &7353551865750002028
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3729,7 +3720,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2986949490956981228}
-  - component: {fileID: 5162054997866499521}
   - component: {fileID: 1568110710311501553}
   - component: {fileID: 4029418163506147930}
   - component: {fileID: 4480686199684130150}
@@ -3758,19 +3748,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5212620085624929029}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5162054997866499521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6483147487374656599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c677e1d39eefa6345ad8d1e96e8bfde4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
 --- !u!33 &1568110710311501553
 MeshFilter:
   m_ObjectHideFlags: 0
