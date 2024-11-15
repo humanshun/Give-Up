@@ -10,6 +10,7 @@ public class CameraControl : MonoBehaviour
 
     private float mouseX, mouseY;
     private PlayerController playerController; // FindObjectOfTypeで自動取得
+    private bool hasReachedThreshold = false; // 30度を超えたかどうかのフラグ
 
     void Start()
     {
@@ -36,16 +37,22 @@ public class CameraControl : MonoBehaviour
         hipJoint.targetRotation = Quaternion.Euler(0, -mouseX, 0);
         stomachiJoint.targetRotation = Quaternion.Euler(-mouseY + stomachOffset, 0, 0);
 
-        // 角度が60度になったらPlayerControllerのjummpp()を呼び出す
+        // 角度が30度以上になったら一度だけPlayerControllerのcameraYをtrueにする
         if (mouseY >= 30)
         {
-            if (playerController != null)
+            if (!hasReachedThreshold && playerController != null)
             {
                 playerController.cameraY = true;
+                hasReachedThreshold = true;
             }
-            else
+        }
+        else
+        {
+            // 30度未満になった場合はcameraYをfalseにし、フラグをリセット
+            if (hasReachedThreshold && playerController != null)
             {
                 playerController.cameraY = false;
+                hasReachedThreshold = false;
             }
         }
     }
