@@ -10,8 +10,9 @@ public class GrabRightHand : MonoBehaviour
     public Rigidbody hipRb;
     private GameObject grabbedObj; // 掴んでいるオブジェクト
     private FixedJoint rightHandJoint; // 右手のFixedJoint
-    private bool buttonDown;
+    public bool buttonDown;
     private PlayerController playerController;
+    private GrabObject grabObjectScript;
 
     void Start()
     {
@@ -50,6 +51,10 @@ public class GrabRightHand : MonoBehaviour
                 grabbedObj = null; // 掴んでいるオブジェクトをクリア
                 rightHandJoint = null;
             }
+            if(grabObjectScript != null)
+            {
+                grabObjectScript.DisengageGrab();
+            }
         }
     }
 
@@ -59,6 +64,14 @@ public class GrabRightHand : MonoBehaviour
         {
             // 当たったオブジェクトを掴む対象として設定
             grabbedObj = other.gameObject;
+
+            // grabbedObj に GrabObject スクリプトが存在する場合のみ処理を実行
+            grabObjectScript = grabbedObj.GetComponent<GrabObject>();
+            if (grabObjectScript != null)
+            {
+                // GrabObject スクリプトの CanMove メソッドを呼び出す
+                grabObjectScript.GrabRight();
+            }
         }
     }
 }
