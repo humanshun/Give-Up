@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Clear.unity
+    guid: 7a925aaaff1ee90498b31e0b875ab81e
+  - enabled: 1
+    path: Assets/YudaiStage.unity
+    guid: 5adc1f4f0ce7d6b45931055591c0396d
   m_configObjects: {}
