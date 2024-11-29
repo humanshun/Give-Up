@@ -5,40 +5,39 @@ using UnityEngine;
 public class GrabObject : MonoBehaviour
 {
     private Rigidbody rb;
-    private GrabLeftHand grabLeftHand;
-    private GrabRightHand grabRightHand;
-    private FixedJoint fixedJoint;
+    private bool aa;
+    private bool bb;
     void Start()
     {
         // Rigidbodyコンポーネントを取得
         rb = GetComponent<Rigidbody>();
     }
-
-    private void OnCollisionEnter(Collision collision)
+    public void GrabLeft()
     {
-        if (collision.gameObject.CompareTag("Hand"))
-        {
-
-            GrabLeftHand grabLeftHand = collision.gameObject.GetComponent<GrabLeftHand>();
-            GrabRightHand grabRightHand = collision.gameObject.GetComponent<GrabRightHand>();
-
-            // 毎フレームでのチェックも可能
-            if (fixedJoint == null)
-            {
-                fixedJoint = GetComponent<FixedJoint>();
-            }
-
-            if (fixedJoint != null)
-            {
-                rb.useGravity = true;
-                rb.isKinematic = false;
-            }
-        }
+        aa = true;
+        CheckCanMove();
+    }
+    public void GrabRight()
+    {
+        bb = true;
+        CheckCanMove();
     }
 
-    private void OnCollisionExit(Collision collision)
+    public void DisengageGrab()
     {
-        if (fixedJoint != null)
+        aa = false;
+        bb = false;
+        CheckCanMove();
+    }
+
+    public void CheckCanMove()
+    {
+        if (aa == true && bb == true)
+        {
+            rb.useGravity = true;
+            rb.isKinematic = false;
+        }
+        else
         {
             rb.useGravity = false;
             rb.isKinematic = true;
