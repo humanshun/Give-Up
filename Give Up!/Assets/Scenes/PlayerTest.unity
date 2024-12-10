@@ -516,6 +516,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TargetAnimationModel
       objectReference: {fileID: 0}
+    - target: {fileID: 2339227723897455706, guid: 253cc4d5c10eabc41993b39180f997c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8071834609957250848, guid: 253cc4d5c10eabc41993b39180f997c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.061
