@@ -5,8 +5,8 @@ using UnityEngine;
 public class GrabObject : MonoBehaviour
 {
     private Rigidbody rb;
-    private bool aa;
-    private bool bb;
+    private bool left;
+    private bool right;
     void Start()
     {
         // Rigidbodyコンポーネントを取得
@@ -14,25 +14,25 @@ public class GrabObject : MonoBehaviour
     }
     public void GrabLeft()
     {
-        aa = true;
+        left = true;
         CheckCanMove();
     }
     public void GrabRight()
     {
-        bb = true;
+        right = true;
         CheckCanMove();
     }
 
     public void DisengageGrab()
     {
-        aa = false;
-        bb = false;
+        left = false;
+        right = false;
         CheckCanMove();
     }
 
     public void CheckCanMove()
     {
-        if (aa == true && bb == true)
+        if (left == true && right == true)
         {
             rb.useGravity = true;
             rb.isKinematic = false;
