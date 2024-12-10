@@ -12,7 +12,12 @@ public class PlayerController : MonoBehaviour
     public Vector3 moveDirection;
 
     public Rigidbody hips;
+
+    public bool cameraY;
+    public bool grabLeftHand;
+    public bool grabRightHand;
     public bool isGrounded;
+    private bool canJump = true;
 
     void Start()
     {
@@ -60,13 +65,29 @@ public class PlayerController : MonoBehaviour
             hips.AddForce(hips.transform.right * strafeSpeed);
         }
         
-        if (Input.GetAxis("Jump") > 0)
+        if (Input.GetAxis("Jump") > 0 && isGrounded && canJump)
         {
             if (isGrounded)
             {
                 hips.AddForce(new Vector3(0, jumpForce, 0));
                 isGrounded = false;
+                canJump = false;
+                StartCoroutine(JumpCooldown());
             }
         }
+        
+        ClimbUp();
+    }
+    public void ClimbUp()
+    {
+        if (cameraY && grabLeftHand && grabRightHand)
+        {
+            hips.AddForce(0, 300f, 0);
+        }
+    }
+    private IEnumerator JumpCooldown()
+    {
+        yield return new WaitForSeconds(0.2f); // 0.2秒待機
+        canJump = true; // ジャンプを再度有効化
     }
 }

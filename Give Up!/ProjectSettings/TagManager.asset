@@ -5,8 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - JumpPad
-  - clear
-  - player
+  - Hand
   layers:
   - Default
   - TransparentFX
