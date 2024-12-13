@@ -10,7 +10,7 @@ public class GroundCheck : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject)
+        if (other.gameObject.CompareTag("Untagged"))
         {
             playerController.isGrounded = true;
         }

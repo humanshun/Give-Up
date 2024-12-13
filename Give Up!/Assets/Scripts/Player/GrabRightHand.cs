@@ -13,6 +13,8 @@ public class GrabRightHand : MonoBehaviour
     public bool buttonDown;
     private PlayerController playerController;
     private GrabObject grabObjectScript;
+    [SerializeField] private string defaltTag = "Untagged";
+    [SerializeField] private string CanMoveObjTag = "CanMoveObj";
 
     void Start()
     {
@@ -42,6 +44,11 @@ public class GrabRightHand : MonoBehaviour
         {
             buttonDown = false;
             animator.SetBool("isRightHandUp", false);
+
+            if (grabbedObj != null)
+            {
+                grabbedObj.tag = defaltTag;
+            }
 
             // 右手のFixedJointを削除
             if (rightHandJoint != null)
@@ -73,6 +80,8 @@ public class GrabRightHand : MonoBehaviour
                 grabObjectScript.GrabRight();
 
                 playerController.grabRightHand = false;
+
+                grabbedObj.tag = CanMoveObjTag;
             }
         }
     }
