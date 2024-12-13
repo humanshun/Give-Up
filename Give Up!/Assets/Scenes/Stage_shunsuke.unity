@@ -17128,7 +17128,7 @@ PrefabInstance:
       objectReference: {fileID: 1946352546}
     - target: {fileID: 3680090459647787860, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: speed
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 3680090459647787860, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: animator
@@ -17136,7 +17136,7 @@ PrefabInstance:
       objectReference: {fileID: 512587598}
     - target: {fileID: 3680090459647787860, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: jumpForce
-      value: 6000
+      value: 8000
       objectReference: {fileID: 0}
     - target: {fileID: 4149454479075451100, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: m_AngularXMotion
@@ -17176,15 +17176,15 @@ PrefabInstance:
       objectReference: {fileID: 512587598}
     - target: {fileID: 6504716657784402541, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: m_AngularXMotion
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6504716657784402541, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: m_AngularYMotion
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6504716657784402541, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: m_AngularZMotion
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6977161343083614425, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: targetLimb
@@ -17276,15 +17276,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8726410383627117299, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: m_AngularXMotion
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8726410383627117299, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: m_AngularYMotion
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8726410383627117299, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: m_AngularZMotion
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
