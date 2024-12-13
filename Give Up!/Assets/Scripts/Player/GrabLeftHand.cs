@@ -12,6 +12,7 @@ public class GrabLeftHand : MonoBehaviour
     private FixedJoint leftHandJoint; // 左手のFixedJoint
     public bool buttonDown;
     private PlayerController playerController;
+    private CameraControl cameraControl;
     private GrabObject grabObjectScript;
 
     void Start()
@@ -74,6 +75,8 @@ public class GrabLeftHand : MonoBehaviour
             {
                 // GrabObject スクリプトの CanMove メソッドを呼び出す
                 grabObjectScript.GrabLeft();
+
+                playerController.grabLeftHand = false;
             }
         }
     }

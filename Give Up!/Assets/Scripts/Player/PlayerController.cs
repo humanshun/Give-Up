@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
     }
     private IEnumerator JumpCooldown()
     {
-        yield return new WaitForSeconds(0.2f); // 0.2秒待機
+        yield return new WaitForSeconds(0.7f); // 0.2秒待機
         canJump = true; // ジャンプを再度有効化
     }
 }
