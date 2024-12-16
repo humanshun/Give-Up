@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -89,5 +90,28 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.7f); // 0.2秒待機
         canJump = true; // ジャンプを再度有効化
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // 衝突したオブジェクトにRigidBodyをつける
+        if (other.gameObject.CompareTag("Object") && GetComponent<Rigidbody>() == null)
+        {
+            Rigidbody rb = other.gameObject.AddComponent<Rigidbody>();
+            rb.isKinematic = true;
+            rb.useGravity = false;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        // 離れたオブジェクトが"Object"タグを持っている場合のみRigidbodyを削除
+        if (other.gameObject.CompareTag("Object"))
+        {
+            Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                Destroy(rb);
+            }
+        }
     }
 }
