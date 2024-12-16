@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2904004125203026837}
   - component: {fileID: 2297614027480751152}
   - component: {fileID: 4036971844788627706}
-  - component: {fileID: 4915331441025939442}
+  - component: {fileID: 3057521828788104239}
   m_Layer: 0
   m_Name: Fire_01
   m_TagString: Untagged
@@ -85,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4915331441025939442
-BoxCollider:
+--- !u!64 &3057521828788104239
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,9 +103,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.4535421, y: 0.27378377, z: 0.45258224}
-  m_Center: {x: -0.0020777956, y: 0.13643892, z: 0.0022401735}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8970867798571677973, guid: 3fa6b351d2ddb3f4ab4351868875adc3, type: 3}
 --- !u!1001 &2885875202448201077
 PrefabInstance:
   m_ObjectHideFlags: 0
