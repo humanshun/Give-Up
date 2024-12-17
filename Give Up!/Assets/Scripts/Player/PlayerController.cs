@@ -113,11 +113,19 @@ public class PlayerController : MonoBehaviour
         // 衝突したオブジェクトにRigidBodyをつける
         if (other.gameObject.CompareTag("Object") && other.gameObject.GetComponent<Rigidbody>() == null)
         {
-            Debug.Log("RigidBodyつけた");
-
             Rigidbody rb = other.gameObject.AddComponent<Rigidbody>();
+            
             rb.isKinematic = true;
             rb.useGravity = false;
+            rb.mass = 0.1f;
+
+            // if (other.gameObject.GetComponent<MeshCollider>() != null)
+            // {
+            //     MeshCollider mc = other.gameObject.GetComponent<MeshCollider>();
+            //     mc.convex = false;
+            //     Debug.Log(mc.convex);
+            // }
+            
         }
     }
     private void OnTriggerExit(Collider other)
@@ -125,7 +133,14 @@ public class PlayerController : MonoBehaviour
         // 離れたオブジェクトが"Object"タグを持っている場合のみRigidbodyを削除
         if (other.gameObject.CompareTag("Object"))
         {
+            // if (other.gameObject.GetComponent<MeshCollider>() != null)
+            // {
+            //     MeshCollider mc = other.gameObject.GetComponent<MeshCollider>();
+            //     mc.convex = true;
+            // }
+            
             Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+
             if (rb != null)
             {
                 Destroy(rb);
