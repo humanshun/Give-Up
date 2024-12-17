@@ -7,11 +7,11 @@ public class GrabObject : MonoBehaviour
     private Rigidbody rb;
     private bool left;
     private bool right;
-    void Start()
-    {
-        // Rigidbodyコンポーネントを取得
-        rb = GetComponent<Rigidbody>();
-    }
+    // void Start()
+    // {
+    //     // Rigidbodyコンポーネントを取得
+    //     rb = GetComponent<Rigidbody>();
+    // }
     public void GrabLeft()
     {
         left = true;
@@ -32,6 +32,10 @@ public class GrabObject : MonoBehaviour
 
     public void CheckCanMove()
     {
+        if (rb == null)
+        {
+            rb = GetComponent<Rigidbody>();
+        }
         if (left == true && right == true)
         {
             rb.useGravity = true;

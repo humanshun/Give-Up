@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,11 +7,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Animator animator;
-    public float speed;
-    public float strafeSpeed;
+    [SerializeField] private Animator animator;
+    [SerializeField] private float speed;
+    [SerializeField] private float strafeSpeed;
+    [SerializeField] private float maxSpeed = 3.0f;
     public float jumpForce;
-    public Vector3 moveDirection;
 
     public Rigidbody hips;
 
@@ -27,58 +28,72 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // 入力方向を初期化
+        Vector3 inputDirection = Vector3.zero;
+
+        // 前後左右の入力を検出
         if (Input.GetKey(KeyCode.W))
         {
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                animator.SetBool("isWalk", true);
-                animator.SetBool("isRun", true);
-                hips.AddForce(hips.transform.forward * speed * 1.5f);
-            }
-            else
-            {
-                animator.SetBool("isRun", false);
-                animator.SetBool("isWalk", true);
-                hips.AddForce(hips.transform.forward * speed);
-            }
+            inputDirection += hips.transform.forward; // 前進
+            UpdateAnimation(isRunning: Input.GetKey(KeyCode.LeftShift), isWalking: true);
         }
-        else
-        {
-            animator.SetBool("isWalk", false);
-            animator.SetBool("isRun", false);
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            animator.SetBool("isWalk", true);
-            hips.AddForce(-hips.transform.right * strafeSpeed);
-        }
-
         if (Input.GetKey(KeyCode.S))
         {
-            animator.SetBool("isWalk", true);
-            hips.AddForce(-hips.transform.forward * strafeSpeed);
+            inputDirection -= hips.transform.forward; // 後退
+            UpdateAnimation(isRunning: false, isWalking: true);
         }
-
+        if (Input.GetKey(KeyCode.A))
+        {
+            inputDirection -= hips.transform.right; // 左移動
+            UpdateAnimation(isRunning: false, isWalking: true);
+        }
         if (Input.GetKey(KeyCode.D))
         {
-            animator.SetBool("isWalk", true);
-            hips.AddForce(hips.transform.right * strafeSpeed);
+            inputDirection += hips.transform.right; // 右移動
+            UpdateAnimation(isRunning: false, isWalking: true);
         }
-        
+
+        // 入力がなければアニメーションを止める
+        if (inputDirection == Vector3.zero)
+        {
+            UpdateAnimation(isRunning: false, isWalking: false);
+        }
+
+        // 入力方向を正規化
+        inputDirection = inputDirection.normalized;
+
+        // 移動速度制限を確認して力を加える
+        if (CanApplyForce(hips.velocity, inputDirection, maxSpeed))
+        {
+            float appliedSpeed = Input.GetKey(KeyCode.LeftShift) ? speed * 1.5f : speed;
+            hips.AddForce(inputDirection * appliedSpeed);
+        }
+
+        // ジャンプ処理
         if (Input.GetAxis("Jump") > 0 && isGrounded && canJump)
         {
-            if (isGrounded)
-            {
-                hips.AddForce(new Vector3(0, jumpForce, 0));
-                isGrounded = false;
-                canJump = false;
-                StartCoroutine(JumpCooldown());
-            }
+            hips.AddForce(Vector3.up * jumpForce);
+            isGrounded = false;
+            canJump = false;
+            StartCoroutine(JumpCooldown());
         }
-        
         ClimbUp();
     }
+
+    // アニメーションの更新
+    private void UpdateAnimation(bool isRunning, bool isWalking)
+    {
+        animator.SetBool("isRun", isRunning);
+        animator.SetBool("isWalk", isWalking);
+    }
+
+    // 指定方向への速度が一定以上出ている場合、力を加えない
+    private bool CanApplyForce(Vector3 currentVelocity, Vector3 inputDirection, float maxSpeed)
+    {
+        float velocityInDirection = Vector3.Dot(currentVelocity, inputDirection);
+        return velocityInDirection < maxSpeed;
+    }
+
     public void ClimbUp()
     {
         if (cameraY && grabLeftHand && grabRightHand)
@@ -94,9 +109,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // Debug.Log("あたった");
         // 衝突したオブジェクトにRigidBodyをつける
-        if (other.gameObject.CompareTag("Object") && GetComponent<Rigidbody>() == null)
+        if (other.gameObject.CompareTag("Object") && other.gameObject.GetComponent<Rigidbody>() == null)
         {
+            Debug.Log("RigidBodyつけた");
+
             Rigidbody rb = other.gameObject.AddComponent<Rigidbody>();
             rb.isKinematic = true;
             rb.useGravity = false;
