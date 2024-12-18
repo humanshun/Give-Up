@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // 格納するリストを作成
+    private List<GameObject> collidedObjects = new List<GameObject>();
     [SerializeField] private Animator animator;
     [SerializeField] private float speed;
     [SerializeField] private float strafeSpeed;
@@ -85,13 +87,23 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            editMode = !editMode;
+
+            // editModeがfalseのとき、格納したオブジェクトのlayerを元に戻す
             if (!editMode)
             {
-                editMode = true;
+                foreach (var obj in collidedObjects)
+                {
+                    obj.layer = 0; // 元のlayerに戻す
+                }
             }
             else
             {
-                editMode = false;
+                // editModeがtrueになったとき、格納したオブジェクトのlayerを9にする
+                foreach (var obj in collidedObjects)
+                {
+                    obj.layer = 9; // layerを9に変更
+                }
             }
         }
     }
@@ -125,26 +137,47 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Debug.Log("あたった");
-        // 衝突したオブジェクトにRigidBodyをつける
-        if (other.gameObject.CompareTag("Object") && other.gameObject.GetComponent<Rigidbody>() == null)
+        // "Object"タグを持っている場合のみ処理
+        if (other.gameObject.CompareTag("Object"))
         {
-            Rigidbody rb = other.gameObject.AddComponent<Rigidbody>();
-            
-            rb.isKinematic = true;
-            rb.useGravity = false;
-            rb.mass = 0.1f;
+            // 衝突したオブジェクトにRigidBodyをつける
+            if (other.gameObject.GetComponent<Rigidbody>() == null)
+            {
+                Rigidbody rb = other.gameObject.AddComponent<Rigidbody>();
+                rb.isKinematic = true;
+                rb.useGravity = false;
+                rb.mass = 0.1f;
+            }
+
+            // editModeがtrueの場合のみ、オブジェクトのlayerを変更
+            if (editMode)
+            {
+                other.gameObject.layer = 9;
+            }
+
+            // リストに格納（タグが"Object"の場合のみ）
+            if (!collidedObjects.Contains(other.gameObject))
+            {
+                collidedObjects.Add(other.gameObject);
+            }
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
+        other.gameObject.layer = 0;
+
+        other.gameObject.layer = 0; // 元のlayerに戻す
+        collidedObjects.Remove(other.gameObject); // リストからそのオブジェクトだけ削除
+
         // 離れたオブジェクトが"Object"タグを持っている場合のみRigidbodyを削除
         if (other.gameObject.CompareTag("Object"))
         {
             Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
 
-            if (rb != null)
+            if (rb != null && !grabLeftHand && !grabRightHand)
             {
+                Debug.Log("aaa");
                 Destroy(rb);
             }
         }

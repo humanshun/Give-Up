@@ -15,19 +15,26 @@ public class GrabObject : MonoBehaviour
     public void GrabLeft()
     {
         left = true;
-        CheckCanMove();
+        if (right)
+        {
+            CheckCanMove();
+        }
     }
     public void GrabRight()
     {
         right = true;
-        CheckCanMove();
+        if (left)
+        {
+            CheckCanMove();
+        }
     }
 
     public void DisengageGrab()
     {
         left = false;
         right = false;
-        CheckCanMove();
+        rb.useGravity = false;
+        rb.isKinematic = true;
     }
 
     public void CheckCanMove()
@@ -38,13 +45,15 @@ public class GrabObject : MonoBehaviour
         }
         if (left == true && right == true && PlayerController.editMode)
         {
+            gameObject.layer = 9;
             rb.useGravity = true;
             rb.isKinematic = false;
         }
-        else
-        {
-            rb.useGravity = false;
-            rb.isKinematic = true;
-        }
+        // else
+        // {
+        //     gameObject.layer = 9;
+        //     rb.useGravity = false;
+        //     rb.isKinematic = true;
+        // }
     }
 }
