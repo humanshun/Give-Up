@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public bool grabRightHand;
     public bool isGrounded;
     private bool canJump = true;
+    public static bool editMode = false;
 
     void Start()
     {
@@ -80,6 +81,21 @@ public class PlayerController : MonoBehaviour
         ClimbUp();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (!editMode)
+            {
+                editMode = true;
+            }
+            else
+            {
+                editMode = false;
+            }
+        }
+    }
+
     // アニメーションの更新
     private void UpdateAnimation(bool isRunning, bool isWalking)
     {
@@ -118,14 +134,6 @@ public class PlayerController : MonoBehaviour
             rb.isKinematic = true;
             rb.useGravity = false;
             rb.mass = 0.1f;
-
-            // if (other.gameObject.GetComponent<MeshCollider>() != null)
-            // {
-            //     MeshCollider mc = other.gameObject.GetComponent<MeshCollider>();
-            //     mc.convex = false;
-            //     Debug.Log(mc.convex);
-            // }
-            
         }
     }
     private void OnTriggerExit(Collider other)
@@ -133,12 +141,6 @@ public class PlayerController : MonoBehaviour
         // 離れたオブジェクトが"Object"タグを持っている場合のみRigidbodyを削除
         if (other.gameObject.CompareTag("Object"))
         {
-            // if (other.gameObject.GetComponent<MeshCollider>() != null)
-            // {
-            //     MeshCollider mc = other.gameObject.GetComponent<MeshCollider>();
-            //     mc.convex = true;
-            // }
-            
             Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
 
             if (rb != null)

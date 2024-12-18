@@ -36,7 +36,7 @@ public class GrabObject : MonoBehaviour
         {
             rb = GetComponent<Rigidbody>();
         }
-        if (left == true && right == true)
+        if (left == true && right == true && PlayerController.editMode)
         {
             rb.useGravity = true;
             rb.isKinematic = false;
