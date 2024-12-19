@@ -177,9 +177,16 @@ public class PlayerController : MonoBehaviour
 
             if (rb != null && !grabLeftHand && !grabRightHand)
             {
-                Debug.Log("aaa");
-                Destroy(rb);
+                StartCoroutine(DestroyRigidbody(rb));
+                
             }
+        }
+    }
+    IEnumerator DestroyRigidbody(Rigidbody rb)
+    {
+        yield return new WaitForSeconds(1);
+        {
+            Destroy(rb);
         }
     }
 }

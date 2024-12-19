@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5177179249125788810}
   - component: {fileID: 8103896085294318383}
   - component: {fileID: 6310147552963819493}
-  - component: {fileID: 4198021989460692572}
+  - component: {fileID: 1843336967115453765}
   m_Layer: 0
   m_Name: Axe_01
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 20.96, y: 20.96, z: 20.96}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -84,25 +84,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4198021989460692572
-MeshCollider:
+--- !u!114 &1843336967115453765
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5517711862614644272}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -9035476687761559398, guid: a1f67aa07796fb24d9b3adf4cc449805, type: 3}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4d0731ce8f1d264882e13ebb4617504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
