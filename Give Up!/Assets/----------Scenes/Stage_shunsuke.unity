@@ -8941,32 +8941,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: febc72bafda4ee247a69a31ec0759177, type: 3}
---- !u!1 &945795422 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4594870599939846080, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-  m_PrefabInstance: {fileID: 2047137268}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &945795427
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945795422}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &946233975 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1576488453971394810, guid: a778b631c6253a04899cb31bad047c81, type: 3}
@@ -17994,60 +17968,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &1863828541 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2085248422970219518, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-  m_PrefabInstance: {fileID: 2047137268}
-  m_PrefabAsset: {fileID: 0}
---- !u!20 &1863828545 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 7826946389547485827, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-  m_PrefabInstance: {fileID: 2047137268}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1863828546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863828541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: 0
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_AllowHDROutput: 1
-  m_UseScreenCoordOverride: 0
-  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
-  m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
 --- !u!4 &1865192693 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4713089516610250915, guid: 535507c5735cf9b429ad8d7e8cc78e9c, type: 3}
@@ -20087,38 +20007,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 21832075271620263, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularXMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 21832075271620263, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularYMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 21832075271620263, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularZMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 21832075271620263, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularYLimit.limit
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 21832075271620263, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_LowAngularXLimit.limit
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 21832075271620263, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_HighAngularXLimit.limit
-      value: 60
-      objectReference: {fileID: 0}
     - target: {fileID: 1054640750434095209, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 512587598}
-    - target: {fileID: 1054640750434095209, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 1863828545}
     - target: {fileID: 1219964782014524549, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: targetLimb
       value: 
@@ -20131,18 +20023,6 @@ PrefabInstance:
       propertyPath: targetLimb
       value: 
       objectReference: {fileID: 427091922}
-    - target: {fileID: 2047966594493993678, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularXMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2047966594493993678, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularYMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2047966594493993678, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularZMotion
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2408512323894340015, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: targetLimb
       value: 
@@ -20152,49 +20032,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1946352546}
     - target: {fileID: 3680090459647787860, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: speed
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 3680090459647787860, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 512587598}
-    - target: {fileID: 3680090459647787860, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: maxSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3680090459647787860, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: jumpForce
-      value: 8000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3680090459647787860, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: grabRightHand
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4149454479075451100, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularXMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4149454479075451100, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularYMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4149454479075451100, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularZMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4149454479075451100, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularYLimit.limit
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 4149454479075451100, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_LowAngularXLimit.limit
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4149454479075451100, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_HighAngularXLimit.limit
-      value: 60
-      objectReference: {fileID: 0}
     - target: {fileID: 4269488832253628019, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: animator
       value: 
@@ -20207,53 +20047,13 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 512587598}
-    - target: {fileID: 6504716657784402541, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularXMotion
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504716657784402541, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularYMotion
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504716657784402541, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularZMotion
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6977161343083614425, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: targetLimb
       value: 
       objectReference: {fileID: 1932369923}
-    - target: {fileID: 7500874984037676370, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularXMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7500874984037676370, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularYMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7500874984037676370, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularZMotion
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7534070139428947226, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: m_Name
       value: Player2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7826946389547485827, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_RenderingPath
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7828607443578558704, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularXMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7828607443578558704, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularYMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7828607443578558704, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularZMotion
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8178554329768868762, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20295,48 +20095,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8178554329768868762, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8598393499120475042, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: targetLimb
       value: 
       objectReference: {fileID: 901648157}
-    - target: {fileID: 8628939620694283471, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularXMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8628939620694283471, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularYMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8628939620694283471, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularZMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8726410383627117299, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularXMotion
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8726410383627117299, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularYMotion
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8726410383627117299, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      propertyPath: m_AngularZMotion
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4594870599939846080, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 945795427}
-    - targetCorrespondingSourceObject: {fileID: 2085248422970219518, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1863828546}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
 --- !u!4 &2049075167 stripped
 Transform:
