@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
 
     public Rigidbody hips;
+    public GrabObject grabObject;
 
     public bool cameraY;
     public bool grabLeftHand;
@@ -147,6 +148,11 @@ public class PlayerController : MonoBehaviour
                 rb.isKinematic = true;
                 rb.useGravity = false;
                 rb.mass = 0.1f;
+            }
+
+            if (other.gameObject.GetComponent<GrabObject>() == null)
+            {
+                grabObject = other.gameObject.AddComponent<GrabObject>();
             }
 
             // editModeがtrueの場合のみ、オブジェクトのlayerを変更
