@@ -6,6 +6,8 @@ TagManager:
   tags:
   - JumpPad
   - Hand
+  - CanMoveObj
+  - Object
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - Ground
   - 
   - noselfcollision
-  - 
+  - Outline
   - 
   - 
   - 
