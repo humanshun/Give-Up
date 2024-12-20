@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
 
     public void ClimbUp()
     {
-        if (cameraY && grabLeftHand && grabRightHand)
+        if (cameraY && grabLeftHand && grabRightHand && !editMode)
         {
             hips.AddForce(0, 300f, 0);
         }
@@ -177,8 +177,8 @@ public class PlayerController : MonoBehaviour
 
             if (rb != null && !grabLeftHand && !grabRightHand)
             {
+                // Destroy(rb);
                 StartCoroutine(DestroyRigidbody(rb));
-                
             }
         }
     }
