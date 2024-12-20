@@ -12,10 +12,9 @@ public class GrabLeftHand : MonoBehaviour
     private FixedJoint leftHandJoint; // 左手のFixedJoint
     public bool buttonDown;
     private PlayerController playerController;
-    private CameraControl cameraControl;
     private GrabObject grabObjectScript;
-    [SerializeField] private string defaltTag = "Untagged";
-    [SerializeField] private string canMoveObjTag = "CanMoveObj";
+    private string defaltTag = "Object";
+    private string canMoveObjTag = "CanMoveObj";
 
     void Start()
     {
@@ -39,8 +38,6 @@ public class GrabLeftHand : MonoBehaviour
                 leftHandJoint = grabbedObj.AddComponent<FixedJoint>();
                 leftHandJoint.connectedBody = rb;
                 leftHandJoint.breakForce = 9001;
-
-
             }
         }
         else if (Input.GetMouseButtonUp(0))
@@ -56,8 +53,8 @@ public class GrabLeftHand : MonoBehaviour
             // 左手のFixedJointを削除
             if (leftHandJoint != null)
             {
-                playerController.grabLeftHand = false;
                 Destroy(leftHandJoint);
+                playerController.grabLeftHand = false;
                 grabbedObj = null; // 掴んでいるオブジェクトをクリア
                 leftHandJoint = null;
             }
