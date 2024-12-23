@@ -130,6 +130,7 @@ public class PlayerController : MonoBehaviour
             hips.AddForce(0, 300f, 0);
         }
     }
+    //
     private IEnumerator JumpCooldown()
     {
         yield return new WaitForSeconds(0.7f); // 0.2秒待機
@@ -180,19 +181,22 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Object"))
         {
             Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+            GrabObject grabObject = other.gameObject.GetComponent<GrabObject>();
 
             if (rb != null && !grabLeftHand && !grabRightHand)
             {
-                // Destroy(rb);
-                StartCoroutine(DestroyRigidbody(rb));
+                Destroy(rb);
+                Destroy(grabObject);
+
+                // StartCoroutine(DestroyRigidbody(rb));
             }
         }
     }
-    IEnumerator DestroyRigidbody(Rigidbody rb)
-    {
-        yield return new WaitForSeconds(1);
-        {
-            Destroy(rb);
-        }
-    }
+    // IEnumerator DestroyRigidbody(Rigidbody rb)
+    // {
+    //     yield return new WaitForSeconds(1);
+    //     {
+    //         Destroy(rb);
+    //     }
+    // }
 }
