@@ -172,8 +172,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        other.gameObject.layer = 0;
-
         other.gameObject.layer = 0; // 元のlayerに戻す
         collidedObjects.Remove(other.gameObject); // リストからそのオブジェクトだけ削除
 
@@ -187,16 +185,7 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(rb);
                 Destroy(grabObject);
-
-                // StartCoroutine(DestroyRigidbody(rb));
             }
         }
     }
-    // IEnumerator DestroyRigidbody(Rigidbody rb)
-    // {
-    //     yield return new WaitForSeconds(1);
-    //     {
-    //         Destroy(rb);
-    //     }
-    // }
 }
