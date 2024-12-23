@@ -21018,6 +21018,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 554609923739018014, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1054640750434095209, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: animator
       value: 
@@ -21050,6 +21054,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 512587598}
+    - target: {fileID: 4425161077862061679, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4902831797668456208, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: targetLimb
       value: 
