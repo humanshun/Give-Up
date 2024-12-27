@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // 格納するリストを作成
-    private List<GameObject> collidedObjects = new List<GameObject>();
+    public List<GameObject> collidedObjects = new List<GameObject>();
     [SerializeField] private Animator animator;
     [SerializeField] private float speed;
     [SerializeField] private float strafeSpeed;
@@ -166,25 +166,30 @@ public class PlayerController : MonoBehaviour
             if (!collidedObjects.Contains(other.gameObject))
             {
                 collidedObjects.Add(other.gameObject);
+                Debug.Log("aa");
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        other.gameObject.layer = 0; // 元のlayerに戻す
-        collidedObjects.Remove(other.gameObject); // リストからそのオブジェクトだけ削除
-
-        // 離れたオブジェクトが"Object"タグを持っている場合のみRigidbodyを削除
         if (other.gameObject.CompareTag("Object"))
         {
-            Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
-            GrabObject grabObject = other.gameObject.GetComponent<GrabObject>();
+            other.gameObject.layer = 0; // 元のlayerに戻す
+            collidedObjects.Remove(other.gameObject); // リストからそのオブジェクトだけ削除
+            Debug.Log("ああ");
 
-            if (rb != null && !grabLeftHand && !grabRightHand)
+            // 離れたオブジェクトが"Object"タグを持っている場合のみRigidbodyを削除
+            if (other.gameObject.CompareTag("Object"))
             {
-                Destroy(rb);
-                Destroy(grabObject);
+                Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+                GrabObject grabObject = other.gameObject.GetComponent<GrabObject>();
+
+                if (rb != null && !grabLeftHand && !grabRightHand)
+                {
+                    Destroy(rb);
+                    Destroy(grabObject);
+                }
             }
         }
     }
