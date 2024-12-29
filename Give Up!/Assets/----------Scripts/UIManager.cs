@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -20,14 +23,26 @@ public class UIManager : MonoBehaviour
 
     private bool isEKeyActive = false; // Eキーの状態を保持
 
+    [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private Button resetButton;
+    [SerializeField] private Button settingButton;
+    [SerializeField] private Button homeButton;
+
+    private Button currentButton;
+    private bool isPaused = false;
+
     void Start()
     {
         // 全てのボタンを初期状態（透明度: normalAlpha）に設定
         foreach (var pair in keyButtonPairs)
         {
             if (pair.button == null) continue;
-            ResetButtonState(pair.button);
+            ResetButtonColorState(pair.button);
         }
+        pauseMenuUI.gameObject.SetActive(false);
+        resetButton.onClick.AddListener(ResetButtonState);
+        settingButton.onClick.AddListener(SettingButtonState);
+        homeButton.onClick.AddListener(HomeButtonState);
     }
 
     void Update()
@@ -48,7 +63,7 @@ public class UIManager : MonoBehaviour
                     }
                     else
                     {
-                        ResetButtonState(pair.button);
+                        ResetButtonColorState(pair.button);
                     }
                 }
             }
@@ -65,6 +80,44 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+    }
+    private void HandleArrowNavigation()
+    {
+        // 矢印キーでボタンを切り替える
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            NavigateToButton(currentButton.navigation.selectOnDown);
+        }
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            NavigateToButton(currentButton.navigation.selectOnUp);
+        }
+    }
+
+    private void NavigateToButton(Selectable nextSelectable)
+    {
+        if (nextSelectable != null && nextSelectable is Button nextButton)
+        {
+            currentButton = nextButton;
+            SelectButton(currentButton);
+        }
+    }
+
+    private void SelectButton(Button button)
+    {
+        EventSystem.current.SetSelectedGameObject(button.gameObject);
     }
 
     private void SetButtonState(Button button, bool isPressed)
@@ -99,7 +152,7 @@ public class UIManager : MonoBehaviour
         buttonImage.color = specialColor;
     }
 
-    private void ResetButtonState(Button button)
+    private void ResetButtonColorState(Button button)
     {
         Image buttonImage = button.GetComponent<Image>();
         if (buttonImage == null) return;
@@ -108,5 +161,36 @@ public class UIManager : MonoBehaviour
         Color color = normalKeyColor;
         color.a = normalAlpha;
         buttonImage.color = color;
+    }
+
+    public void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1.0f;
+        isPaused = false;
+    }
+    public void Pause()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        isPaused = true;
+
+        // ポーズ時に最初のボタンを選択
+        SelectButton(resetButton);
+    }
+
+    private void ResetButtonState()
+    {
+        //現在のステージ情報を取得して、ステージを再読み込みする予定
+        Debug.Log("ステージをリセットします");
+    }
+    private void SettingButtonState()
+    {
+        //セッティング
+    }
+    private void HomeButtonState()
+    {
+        //titleにシーン遷移
+        SceneManager.LoadScene("Title");
     }
 }
