@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // 格納するリストを作成
-    private List<GameObject> collidedObjects = new List<GameObject>();
+    public List<GameObject> collidedObjects = new List<GameObject>();
     [SerializeField] private Animator animator;
     [SerializeField] private float speed;
     [SerializeField] private float strafeSpeed;
@@ -130,6 +130,7 @@ public class PlayerController : MonoBehaviour
             hips.AddForce(0, 300f, 0);
         }
     }
+    //
     private IEnumerator JumpCooldown()
     {
         yield return new WaitForSeconds(0.7f); // 0.2秒待機
@@ -165,34 +166,31 @@ public class PlayerController : MonoBehaviour
             if (!collidedObjects.Contains(other.gameObject))
             {
                 collidedObjects.Add(other.gameObject);
+                Debug.Log("aa");
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        other.gameObject.layer = 0;
-
-        other.gameObject.layer = 0; // 元のlayerに戻す
-        collidedObjects.Remove(other.gameObject); // リストからそのオブジェクトだけ削除
-
-        // 離れたオブジェクトが"Object"タグを持っている場合のみRigidbodyを削除
         if (other.gameObject.CompareTag("Object"))
         {
-            Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+            other.gameObject.layer = 0; // 元のlayerに戻す
+            collidedObjects.Remove(other.gameObject); // リストからそのオブジェクトだけ削除
+            Debug.Log("ああ");
 
-            if (rb != null && !grabLeftHand && !grabRightHand)
+            // 離れたオブジェクトが"Object"タグを持っている場合のみRigidbodyを削除
+            if (other.gameObject.CompareTag("Object"))
             {
-                // Destroy(rb);
-                StartCoroutine(DestroyRigidbody(rb));
+                Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+                GrabObject grabObject = other.gameObject.GetComponent<GrabObject>();
+
+                if (rb != null && !grabLeftHand && !grabRightHand)
+                {
+                    Destroy(rb);
+                    Destroy(grabObject);
+                }
             }
-        }
-    }
-    IEnumerator DestroyRigidbody(Rigidbody rb)
-    {
-        yield return new WaitForSeconds(1);
-        {
-            Destroy(rb);
         }
     }
 }

@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/----------Scenes/Title.unity
     guid: 5e3565e08c6a4ba4686b625342167291
   - enabled: 1
-    path: Assets/----------Scenes/CharacterTest.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/----------Scenes/Stage_okazaki.unity
+    guid: fcaa16b47873e7346af2d1599c0709d5
+  - enabled: 1
+    path: Assets/----------Scenes/Stage_okazaki2.unity
+    guid: d9d2c45eb8598cc4e9c886021daa3773
+  - enabled: 1
+    path: Assets/----------Scenes/Stage_shunsuke.unity
+    guid: 96021fb884873eb46bcc120da4f1b071
   m_configObjects: {}
