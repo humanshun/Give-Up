@@ -47,40 +47,42 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        foreach (var pair in keyButtonPairs)
+        if (!isPaused)
         {
-            if (pair.button == null) continue;
+            foreach (var pair in keyButtonPairs)
+            {
+                if (pair.button == null) continue;
 
-            if (pair.key == KeyCode.E)
-            {
-                // Eキーが押された場合
-                if (Input.GetKeyDown(pair.key))
+                if (pair.key == KeyCode.E)
                 {
-                    isEKeyActive = !isEKeyActive; // 状態を切り替える
-                    if (isEKeyActive)
+                    // Eキーが押された場合
+                    if (Input.GetKeyDown(pair.key))
                     {
-                        SetButtonSpecialState(pair.button, specialKeyColor);
+                        isEKeyActive = !isEKeyActive; // 状態を切り替える
+                        if (isEKeyActive)
+                        {
+                            SetButtonSpecialState(pair.button, specialKeyColor);
+                        }
+                        else
+                        {
+                            ResetButtonColorState(pair.button);
+                        }
                     }
-                    else
-                    {
-                        ResetButtonColorState(pair.button);
-                    }
-                }
-            }
-            else
-            {
-                // 通常のキーの処理
-                if (Input.GetKey(pair.key))
-                {
-                    SetButtonState(pair.button, true);
                 }
                 else
                 {
-                    SetButtonState(pair.button, false);
+                    // 通常のキーの処理
+                    if (Input.GetKey(pair.key))
+                    {
+                        SetButtonState(pair.button, true);
+                    }
+                    else
+                    {
+                        SetButtonState(pair.button, false);
+                    }
                 }
             }
         }
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -93,27 +95,27 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-    private void HandleArrowNavigation()
-    {
-        // 矢印キーでボタンを切り替える
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            NavigateToButton(currentButton.navigation.selectOnDown);
-        }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            NavigateToButton(currentButton.navigation.selectOnUp);
-        }
-    }
+    // private void HandleArrowNavigation()
+    // {
+    //     // 矢印キーでボタンを切り替える
+    //     if (Input.GetKeyDown(KeyCode.DownArrow))
+    //     {
+    //         NavigateToButton(currentButton.navigation.selectOnDown);
+    //     }
+    //     else if (Input.GetKeyDown(KeyCode.UpArrow))
+    //     {
+    //         NavigateToButton(currentButton.navigation.selectOnUp);
+    //     }
+    // }
 
-    private void NavigateToButton(Selectable nextSelectable)
-    {
-        if (nextSelectable != null && nextSelectable is Button nextButton)
-        {
-            currentButton = nextButton;
-            SelectButton(currentButton);
-        }
-    }
+    // private void NavigateToButton(Selectable nextSelectable)
+    // {
+    //     if (nextSelectable != null && nextSelectable is Button nextButton)
+    //     {
+    //         currentButton = nextButton;
+    //         SelectButton(currentButton);
+    //     }
+    // }
 
     private void SelectButton(Button button)
     {
@@ -166,8 +168,10 @@ public class UIManager : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1.0f;
+        
         isPaused = false;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
     public void Pause()
     {
@@ -177,12 +181,20 @@ public class UIManager : MonoBehaviour
 
         // ポーズ時に最初のボタンを選択
         SelectButton(resetButton);
+
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void ResetButtonState()
     {
         //現在のステージ情報を取得して、ステージを再読み込みする予定
         Debug.Log("ステージをリセットします");
+
+        Time.timeScale = 1.0f;
+
+        string sceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(sceneName);
+        
     }
     private void SettingButtonState()
     {
