@@ -28,6 +28,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button settingButton;
     [SerializeField] private Button homeButton;
 
+
+    [SerializeField] private GameObject settingMenuUI;
+    [SerializeField] private Slider volumeSlider;
+    [SerializeField] private InputField sensitivityField;
+    [SerializeField] private Button settingsBackButton;
+
     private Button currentButton;
     private bool isPaused = false;
 
@@ -43,6 +49,12 @@ public class UIManager : MonoBehaviour
         resetButton.onClick.AddListener(ResetButtonState);
         settingButton.onClick.AddListener(SettingButtonState);
         homeButton.onClick.AddListener(HomeButtonState);
+
+        volumeSlider.onValueChanged.AddListener(OnVolumeChanged);
+
+        volumeSlider.value = 0.5f;
+
+        OnVolumeChanged(volumeSlider.value);
     }
 
     void Update()
@@ -188,7 +200,7 @@ public class UIManager : MonoBehaviour
     private void ResetButtonState()
     {
         //現在のステージ情報を取得して、ステージを再読み込みする予定
-        Debug.Log("ステージをリセットします");
+        // Debug.Log("ステージをリセットします");
 
         Time.timeScale = 1.0f;
 
@@ -199,10 +211,24 @@ public class UIManager : MonoBehaviour
     private void SettingButtonState()
     {
         //セッティング
+        Debug.Log("セッティング");
+
+        pauseMenuUI.SetActive(false);
+        settingMenuUI.SetActive(true);
+
+
     }
     private void HomeButtonState()
     {
         //titleにシーン遷移
         SceneManager.LoadScene("Title");
+    }
+
+    private void OnVolumeChanged(float value)
+    {
+        if (BGMManager.Instance != null)
+        {
+            BGMManager.Instance.SetVolume(value);
+        }
     }
 }
