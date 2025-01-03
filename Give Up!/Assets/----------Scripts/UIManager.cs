@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -28,17 +29,31 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button settingButton;
     [SerializeField] private Button homeButton;
 
-
+    [SerializeField] private CameraControl cameraControl;
     [SerializeField] private GameObject settingMenuUI;
     [SerializeField] private Slider volumeSlider;
-    [SerializeField] private InputField sensitivityField;
+    [SerializeField] private TMP_InputField sensitivityField;
     [SerializeField] private Button settingsBackButton;
 
     private Button currentButton;
     private bool isPaused = false;
 
+    private const float MinRotationSpeed = 0.1f;
+    private const float MaxRotationSpeed = 10.0f;
+
+    
+
     void Start()
     {
+        // cameraControlが設定されていない場合、自動取得を試みる
+        if (cameraControl == null)
+        {
+            cameraControl = FindObjectOfType<CameraControl>();
+            if (cameraControl == null)
+            {
+                Debug.LogError("CameraControlが見つかりません。インスペクターで設定してください。");
+            }
+        }
         // 全てのボタンを初期状態（透明度: normalAlpha）に設定
         foreach (var pair in keyButtonPairs)
         {
@@ -46,15 +61,22 @@ public class UIManager : MonoBehaviour
             ResetButtonColorState(pair.button);
         }
         pauseMenuUI.gameObject.SetActive(false);
+        settingMenuUI.gameObject.SetActive(false);
         resetButton.onClick.AddListener(ResetButtonState);
         settingButton.onClick.AddListener(SettingButtonState);
         homeButton.onClick.AddListener(HomeButtonState);
+        settingsBackButton.onClick.AddListener(SettingsBackButtonState);
 
         volumeSlider.onValueChanged.AddListener(OnVolumeChanged);
+        sensitivityField.onValueChanged.AddListener(OnSensitivityChanged);
 
         volumeSlider.value = 0.5f;
 
         OnVolumeChanged(volumeSlider.value);
+
+        // 初期値を反映
+        sensitivityField.text = cameraControl.rotationSpeed.ToString("F1");
+        OnSensitivityChanged(sensitivityField.text);
     }
 
     void Update()
@@ -133,6 +155,10 @@ public class UIManager : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(button.gameObject);
     }
+    private void SelectSlider(Slider slider)
+    {
+        EventSystem.current.SetSelectedGameObject(slider.gameObject);
+    }
 
     private void SetButtonState(Button button, bool isPressed)
     {
@@ -180,7 +206,8 @@ public class UIManager : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
-        
+        settingMenuUI.SetActive(false);
+        Time.timeScale = 1.0f;
         isPaused = false;
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -216,7 +243,7 @@ public class UIManager : MonoBehaviour
         pauseMenuUI.SetActive(false);
         settingMenuUI.SetActive(true);
 
-
+        SelectSlider(volumeSlider);
     }
     private void HomeButtonState()
     {
@@ -230,5 +257,21 @@ public class UIManager : MonoBehaviour
         {
             BGMManager.Instance.SetVolume(value);
         }
+    }
+    private void OnSensitivityChanged(string newValue)
+    {
+        if (float.TryParse(newValue, out float parsedValue))
+        {
+            cameraControl.rotationSpeed = Mathf.Clamp(parsedValue, MinRotationSpeed, MaxRotationSpeed);
+        }
+        else
+        {
+            sensitivityField.text = cameraControl.rotationSpeed.ToString("F1");
+        }
+    }
+    private void SettingsBackButtonState()
+    {
+        settingMenuUI.gameObject.SetActive(false);
+        pauseMenuUI.gameObject.SetActive(true);
     }
 }
