@@ -60,8 +60,7 @@ public class UIManager : MonoBehaviour
             if (pair.button == null) continue;
             ResetButtonColorState(pair.button);
         }
-        pauseMenuUI.gameObject.SetActive(false);
-        settingMenuUI.gameObject.SetActive(false);
+        
         resetButton.onClick.AddListener(ResetButtonState);
         settingButton.onClick.AddListener(SettingButtonState);
         homeButton.onClick.AddListener(HomeButtonState);
@@ -77,6 +76,9 @@ public class UIManager : MonoBehaviour
         // 初期値を反映
         sensitivityField.text = cameraControl.rotationSpeed.ToString("F1");
         OnSensitivityChanged(sensitivityField.text);
+
+        pauseMenuUI.gameObject.SetActive(false);
+        settingMenuUI.gameObject.SetActive(false);
     }
 
     void Update()
