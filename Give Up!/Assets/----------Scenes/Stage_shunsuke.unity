@@ -6478,6 +6478,7 @@ MonoBehaviour:
   settingMenuUI: {fileID: 1075894113}
   volumeSlider: {fileID: 423949124}
   sensitivityField: {fileID: 0}
+  settingsBackButton: {fileID: 0}
 --- !u!4 &554005357
 Transform:
   m_ObjectHideFlags: 0
@@ -7328,7 +7329,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 656168123}
-  m_Father: {fileID: 343595370}
+  m_Father: {fileID: 1075894114}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14081,6 +14082,7 @@ RectTransform:
   - {fileID: 423949123}
   - {fileID: 1651265893}
   - {fileID: 1602380090}
+  - {fileID: 622745270}
   m_Father: {fileID: 343595370}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -28821,9 +28823,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7757600733308906184, guid: 23242ef9fd458db48a0cf78d68f40a42, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1075894114}
-    - targetCorrespondingSourceObject: {fileID: 7757600733308906184, guid: 23242ef9fd458db48a0cf78d68f40a42, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 622745270}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23242ef9fd458db48a0cf78d68f40a42, type: 3}
 --- !u!1001 &1525148941130793191

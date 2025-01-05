@@ -46,6 +46,7 @@ public class UIManager : MonoBehaviour
             ResetButtonColorState(pair.button);
         }
         pauseMenuUI.gameObject.SetActive(false);
+        settingMenuUI.gameObject.SetActive(false);
         resetButton.onClick.AddListener(ResetButtonState);
         settingButton.onClick.AddListener(SettingButtonState);
         homeButton.onClick.AddListener(HomeButtonState);
