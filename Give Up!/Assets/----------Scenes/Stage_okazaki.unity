@@ -3088,7 +3088,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1433533721551416546, guid: 1328d84ccae42b1488b718f3d7ec0e03, type: 3}
       propertyPath: NextStageName
-      value: Stage_okazaki2
+      value: Stage_Goal
       objectReference: {fileID: 0}
     - target: {fileID: 1483309192971640366, guid: 1328d84ccae42b1488b718f3d7ec0e03, type: 3}
       propertyPath: m_Name
