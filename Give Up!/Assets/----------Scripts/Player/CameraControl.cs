@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    public float rotationSpeed = 3;
+    public static float savedSpeed = 5f;
+    private float rotationSpeed;
     public Transform root;
     public Animator animator;
 
@@ -17,6 +18,7 @@ public class CameraControl : MonoBehaviour
 
     void Start()
     {
+        rotationSpeed = savedSpeed;
         Cursor.lockState = CursorLockMode.Locked;
 
         // PlayerControllerの参照をFindObjectOfTypeで取得
