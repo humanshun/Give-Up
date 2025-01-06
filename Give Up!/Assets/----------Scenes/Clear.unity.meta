@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Give Up!/Assets/----------Scenes/Clear.unity.meta
 guid: 7a925aaaff1ee90498b31e0b875ab81e
+========
+guid: 80856957870e47d47a04e71836d5aa5b
+folderAsset: yes
+>>>>>>>> feature/test2:Give Up!/Assets/----------Scenes/Stage_okazaki.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

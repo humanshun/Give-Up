@@ -7,12 +7,13 @@ using UnityEngine.UI;
 public class TitleBackButton : MonoBehaviour
 {
     [SerializeField] private Button button;
+    [SerializeField] private string sceneName;
     void Start()
     {
         button.onClick.AddListener(OnClickButton);
     }
     private void OnClickButton()
     {
-        SceneManager.LoadScene("Stage_shindome");
+        SceneManager.LoadScene(sceneName);
     }
 }

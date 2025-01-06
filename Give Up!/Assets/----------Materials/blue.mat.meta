@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Give Up!/Assets/----------Materials/blue.mat.meta
 guid: 7470e91e0673bbc4f9b13064c1240c2d
 NativeFormatImporter:
+========
+guid: d42bd1f5c2ca406488361814868b2622
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> feature/test2:Give Up!/Assets/----------Video.meta
   externalObjects: {}
   mainObjectFileID: 2100000
   userData: 

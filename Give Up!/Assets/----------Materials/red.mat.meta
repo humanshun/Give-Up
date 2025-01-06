@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Give Up!/Assets/----------Materials/red.mat.meta
 guid: d857f1abe11258c43859cdce8ee783b6
 NativeFormatImporter:
+========
+guid: 9571d9631e1776f40a6beb6e83759127
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> feature/test2:Give Up!/Assets/Script.meta
   externalObjects: {}
   mainObjectFileID: 2100000
   userData: 
