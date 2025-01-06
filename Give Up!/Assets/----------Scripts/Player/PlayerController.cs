@@ -166,7 +166,6 @@ public class PlayerController : MonoBehaviour
             if (!collidedObjects.Contains(other.gameObject))
             {
                 collidedObjects.Add(other.gameObject);
-                Debug.Log("aa");
             }
         }
     }
@@ -177,7 +176,6 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.layer = 0; // 元のlayerに戻す
             collidedObjects.Remove(other.gameObject); // リストからそのオブジェクトだけ削除
-            Debug.Log("ああ");
 
             // 離れたオブジェクトが"Object"タグを持っている場合のみRigidbodyを削除
             if (other.gameObject.CompareTag("Object"))
