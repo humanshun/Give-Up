@@ -8,9 +8,9 @@ public class Switch : MonoBehaviour
     private bool isCooldown = false; // クールダウン中かどうかのフラグ
     public float cooldownTime = 5f; // クールダウンの時間（秒）
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player") && !isCooldown) // プレイヤーがスイッチに触れてかつクールダウン中でない場合
+        if (collision.gameObject.CompareTag("Player") && !isCooldown) // プレイヤーがスイッチに触れてかつクールダウン中でない場合
         {
             foreach (SlidingDoor slidingDoor in slidingDoors) // 各スライディングドアに対して
             {
