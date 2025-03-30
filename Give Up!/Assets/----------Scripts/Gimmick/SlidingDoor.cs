@@ -26,7 +26,7 @@ public class SlidingDoor : MonoBehaviour
     {
         if (isOpen)
         {
-            StartCoroutine(CloseDoor());
+            // StartCoroutine(CloseDoor());
         }
         else
         {
@@ -56,7 +56,7 @@ public class SlidingDoor : MonoBehaviour
 
         isOpen = true;
         yield return new WaitForSeconds(waitTime);
-        StartCoroutine(CloseDoor());
+        // StartCoroutine(CloseDoor());
     }
 
     private IEnumerator CloseDoor()

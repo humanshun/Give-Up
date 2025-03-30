@@ -80,7 +80,7 @@ public class GrabLeftHand : MonoBehaviour
                 // GrabObject スクリプトの CanMove メソッドを呼び出す
                 grabObjectScript.GrabLeft();
 
-                playerController.grabLeftHand = false;
+                // playerController.grabLeftHand = false;
 
                 grabbedObj.tag = canMoveObjTag;
             }

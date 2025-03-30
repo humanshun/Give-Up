@@ -1311,7 +1311,7 @@ GameObject:
   - component: {fileID: 9082386990844041424}
   m_Layer: 8
   m_Name: head
-  m_TagString: Player
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3189,6 +3189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f8ac503d616db442a4dd8456137184c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collidedObjects: []
   animator: {fileID: 0}
   speed: 150
   strafeSpeed: 100
@@ -5893,7 +5894,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!153 &2047966594493993678
 ConfigurableJoint:
   m_ObjectHideFlags: 0
@@ -6129,7 +6130,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!153 &8628939620694283471
 ConfigurableJoint:
   m_ObjectHideFlags: 0
