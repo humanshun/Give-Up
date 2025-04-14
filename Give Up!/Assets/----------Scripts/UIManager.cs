@@ -225,6 +225,7 @@ public class UIManager : MonoBehaviour
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
+        resetButton.gameObject.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
 

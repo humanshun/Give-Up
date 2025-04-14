@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/----------Scenes/Stage_okazaki2.unity
     guid: d9d2c45eb8598cc4e9c886021daa3773
+  - enabled: 1
+    path: Assets/----------Scenes/Stage_yudai.unity
+    guid: c6b370337e87431498672ebfc378f500
+  - enabled: 1
+    path: Assets/----------Scenes/Stage_Goal.unity
+    guid: 2f37248fcfad2124c9f189a62563b5dc
   m_configObjects: {}
