@@ -1222,6 +1222,7 @@ RectTransform:
   - {fileID: 4011241490563511290}
   - {fileID: 324053636173822597}
   - {fileID: 8732058158187410745}
+  - {fileID: 4150186327233403477}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5178,3 +5179,129 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1001 &4627126953938190810
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7757600733308906184}
+    m_Modifications:
+    - target: {fileID: 1936030355793886349, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: homeButton
+      value: 
+      objectReference: {fileID: 7989774212857501678}
+    - target: {fileID: 1936030355793886349, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: pauseMenuUI
+      value: 
+      objectReference: {fileID: 8093442677382695397}
+    - target: {fileID: 1936030355793886349, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: resetButton
+      value: 
+      objectReference: {fileID: 4294629514869649333}
+    - target: {fileID: 1936030355793886349, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: volumeSlider
+      value: 
+      objectReference: {fileID: 432222003388070449}
+    - target: {fileID: 1936030355793886349, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: settingButton
+      value: 
+      objectReference: {fileID: 6427964716632746948}
+    - target: {fileID: 1936030355793886349, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: settingMenuUI
+      value: 
+      objectReference: {fileID: 2596657315912333484}
+    - target: {fileID: 1936030355793886349, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: sensitivityField
+      value: 
+      objectReference: {fileID: 6321966949455372545}
+    - target: {fileID: 1936030355793886349, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: settingsBackButton
+      value: 
+      objectReference: {fileID: 8733597959533541947}
+    - target: {fileID: 1936030355793886349, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: keyButtonPairs.Array.data[0].button
+      value: 
+      objectReference: {fileID: 2988140175357910441}
+    - target: {fileID: 1936030355793886349, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: keyButtonPairs.Array.data[1].button
+      value: 
+      objectReference: {fileID: 4733595274438745729}
+    - target: {fileID: 1936030355793886349, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: keyButtonPairs.Array.data[2].button
+      value: 
+      objectReference: {fileID: 3604222275962476458}
+    - target: {fileID: 1936030355793886349, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: keyButtonPairs.Array.data[3].button
+      value: 
+      objectReference: {fileID: 312785572261073048}
+    - target: {fileID: 1936030355793886349, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: keyButtonPairs.Array.data[4].button
+      value: 
+      objectReference: {fileID: 4989190765333215452}
+    - target: {fileID: 1936030355793886349, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: keyButtonPairs.Array.data[5].button
+      value: 
+      objectReference: {fileID: 752186809548041992}
+    - target: {fileID: 1936030355793886349, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: keyButtonPairs.Array.data[6].button
+      value: 
+      objectReference: {fileID: 220638676431529658}
+    - target: {fileID: 1936030355793886349, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: keyButtonPairs.Array.data[7].button
+      value: 
+      objectReference: {fileID: 8683641501873950912}
+    - target: {fileID: 4971425006970950261, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: m_Name
+      value: UIManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768146783188622223, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1058.3875
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768146783188622223, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 509.89825
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768146783188622223, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.747983
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768146783188622223, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768146783188622223, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768146783188622223, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768146783188622223, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768146783188622223, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768146783188622223, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768146783188622223, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+--- !u!4 &4150186327233403477 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8768146783188622223, guid: d679cc715f5e8a84dbb19f87ac32fe69, type: 3}
+  m_PrefabInstance: {fileID: 4627126953938190810}
+  m_PrefabAsset: {fileID: 0}

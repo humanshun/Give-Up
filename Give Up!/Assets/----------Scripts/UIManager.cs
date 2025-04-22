@@ -66,15 +66,23 @@ public class UIManager : MonoBehaviour
         homeButton.onClick.AddListener(HomeButtonState);
         settingsBackButton.onClick.AddListener(SettingsBackButtonState);
 
+        // BGMManager があれば音量をスライダーに合わせる
+        if (BGMManager.Instance != null)
+        {
+            volumeSlider.value = BGMManager.Instance.GetVolume();
+        }
+        else
+        {
+            volumeSlider.value = 0.5f; // 念のため
+        }
+
         volumeSlider.onValueChanged.AddListener(OnVolumeChanged);
         sensitivityField.onValueChanged.AddListener(OnSensitivityChanged);
-
-        volumeSlider.value = 0.5f;
 
         OnVolumeChanged(volumeSlider.value);
 
         // 初期値を反映
-        sensitivityField.text = cameraControl.rotationSpeed.ToString("F1");
+        sensitivityField.text = CameraControl.savedSpeed.ToString("F1");
         OnSensitivityChanged(sensitivityField.text);
 
         pauseMenuUI.gameObject.SetActive(false);
@@ -217,6 +225,7 @@ public class UIManager : MonoBehaviour
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
+        resetButton.gameObject.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
 
@@ -250,6 +259,7 @@ public class UIManager : MonoBehaviour
     private void HomeButtonState()
     {
         //titleにシーン遷移
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("Title");
     }
 
@@ -264,11 +274,11 @@ public class UIManager : MonoBehaviour
     {
         if (float.TryParse(newValue, out float parsedValue))
         {
-            cameraControl.rotationSpeed = Mathf.Clamp(parsedValue, MinRotationSpeed, MaxRotationSpeed);
+            CameraControl.savedSpeed = Mathf.Clamp(parsedValue, MinRotationSpeed, MaxRotationSpeed);
         }
         else
         {
-            sensitivityField.text = cameraControl.rotationSpeed.ToString("F1");
+            sensitivityField.text = CameraControl.savedSpeed.ToString("F1");
         }
     }
     private void SettingsBackButtonState()
