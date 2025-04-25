@@ -7,7 +7,9 @@ using UnityEditor;
 public class SceneChange : MonoBehaviour
 {
     // インスペクター上でシーンを指定するためのフィールド
-    [SerializeField] private SceneAsset sceneAsset;
+    #if UNITY_EDITOR
+    public SceneAsset sceneAsset;
+    #endif
 
     // シーンの名前を格納する変数（エディタ上で設定）
     private string sceneName;
