@@ -1653,7 +1653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d12d9effd77be4ba38a2fcb1a6a591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 5
   root: {fileID: 4096209791487535000}
   animator: {fileID: 0}
   stomachOffset: 0
@@ -3194,6 +3193,7 @@ MonoBehaviour:
   speed: 150
   strafeSpeed: 100
   maxSpeed: 10
+  removeDistance: 20
   jumpForce: 8000
   hips: {fileID: 6240684268100819642}
   grabObject: {fileID: 0}

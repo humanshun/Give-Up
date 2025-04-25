@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float strafeSpeed;
     [SerializeField] private float maxSpeed = 3.0f;
+
+    [SerializeField] private float removeDistance = 20.0f;
     public float jumpForce;
 
     public Rigidbody hips;
@@ -91,19 +93,33 @@ public class PlayerController : MonoBehaviour
             editMode = !editMode;
 
             // editModeがfalseのとき、格納したオブジェクトのlayerを元に戻す
-            if (!editMode)
+            foreach (var obj in collidedObjects)
             {
-                foreach (var obj in collidedObjects)
-                {
-                    obj.layer = 0; // 元のlayerに戻す
-                }
+                obj.layer = editMode ? 9 : 0;
             }
-            else
+        }
+
+        // 一定距離を超えたオブジェクトをリストから削除
+        for (int i = collidedObjects.Count - 1; i >= 0; i--)
+        {
+            GameObject obj = collidedObjects[i];
+            if (obj == null) continue;
+
+            float distance = Vector3.Distance(transform.position, obj.transform.position);
+
+            if (distance > removeDistance)
             {
-                // editModeがtrueになったとき、格納したオブジェクトのlayerを9にする
-                foreach (var obj in collidedObjects)
+                obj.layer = 0;
+                collidedObjects.RemoveAt(i);
+
+                // RigidbodyやGrabObjectの削除（両手で掴んでないとき）
+                if (!grabLeftHand && !grabRightHand)
                 {
-                    obj.layer = 9; // layerを9に変更
+                    Rigidbody rb = obj.GetComponent<Rigidbody>();
+                    if (rb != null) Destroy(rb);
+
+                    GrabObject gObj = obj.GetComponent<GrabObject>();
+                    if (gObj != null) Destroy(gObj);
                 }
             }
         }
@@ -170,25 +186,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Object"))
-        {
-            other.gameObject.layer = 0; // 元のlayerに戻す
-            collidedObjects.Remove(other.gameObject); // リストからそのオブジェクトだけ削除
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     if (other.gameObject.CompareTag("Object"))
+    //     {
+    //         other.gameObject.layer = 0; // 元のlayerに戻す
+    //         collidedObjects.Remove(other.gameObject); // リストからそのオブジェクトだけ削除
 
-            // 離れたオブジェクトが"Object"タグを持っている場合のみRigidbodyを削除
-            if (other.gameObject.CompareTag("Object"))
-            {
-                Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
-                GrabObject grabObject = other.gameObject.GetComponent<GrabObject>();
+    //         // 離れたオブジェクトが"Object"タグを持っている場合のみRigidbodyを削除
+    //         if (other.gameObject.CompareTag("Object"))
+    //         {
+    //             Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+    //             GrabObject grabObject = other.gameObject.GetComponent<GrabObject>();
 
-                if (rb != null && !grabLeftHand && !grabRightHand)
-                {
-                    Destroy(rb);
-                    Destroy(grabObject);
-                }
-            }
-        }
-    }
+    //             if (rb != null && !grabLeftHand && !grabRightHand)
+    //             {
+    //                 Destroy(rb);
+    //                 Destroy(grabObject);
+    //             }
+    //         }
+    //     }
+    // }
 }
