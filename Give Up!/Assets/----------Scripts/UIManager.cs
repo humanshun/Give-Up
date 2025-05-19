@@ -258,9 +258,7 @@ public class UIManager : MonoBehaviour
     }
     private void HomeButtonState()
     {
-        //titleにシーン遷移
-        Time.timeScale = 1.0f;
-        SceneManager.LoadScene("Title");
+        Application.Quit();
     }
 
     private void OnVolumeChanged(float value)

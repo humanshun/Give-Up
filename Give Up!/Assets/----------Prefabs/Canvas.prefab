@@ -2491,7 +2491,7 @@ GameObject:
   - component: {fileID: 8342282031693157519}
   - component: {fileID: 7989774212857501678}
   m_Layer: 5
-  m_Name: HomeButton
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5018,7 +5018,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HOME
+  m_text: QUIT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fc3b5eb8bed3d624187f6e3b7c01254a, type: 2}
   m_sharedMaterial: {fileID: 6846341787975817515, guid: fc3b5eb8bed3d624187f6e3b7c01254a, type: 2}
