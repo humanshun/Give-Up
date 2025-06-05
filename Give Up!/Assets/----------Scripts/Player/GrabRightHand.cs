@@ -16,6 +16,8 @@ public class GrabRightHand : MonoBehaviour
     private string defaltTag = "Object";
     private string CanMoveObjTag = "CanMoveObj";
 
+    [SerializeField] private CapsuleCollider[] rightHandColliders; // 左手自身のコライダー
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -38,6 +40,11 @@ public class GrabRightHand : MonoBehaviour
                 rightHandJoint = grabbedObj.AddComponent<FixedJoint>();
                 rightHandJoint.connectedBody = rb;
                 rightHandJoint.breakForce = 9001;
+
+                foreach (var a in rightHandColliders)
+                {
+                    a.enabled = false; // 掴んだら左手のコライダーをオフ
+                }
             }
         }
         else if (Input.GetMouseButtonUp(1))
@@ -57,6 +64,11 @@ public class GrabRightHand : MonoBehaviour
                 playerController.grabRightHand = false;
                 grabbedObj = null; // 掴んでいるオブジェクトをクリア
                 rightHandJoint = null;
+
+                foreach (var a in rightHandColliders)
+                {
+                    a.enabled = true; // 掴んだら左手のコライダーをオン
+                }
             }
             
             if(grabObjectScript != null)

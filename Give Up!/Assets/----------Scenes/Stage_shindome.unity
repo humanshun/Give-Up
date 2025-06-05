@@ -23834,6 +23834,18 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 512587598}
+    - target: {fileID: 4269488832253628019, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+      propertyPath: rightHandColliders.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4269488832253628019, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+      propertyPath: rightHandColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 2047137269}
+    - target: {fileID: 4269488832253628019, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+      propertyPath: rightHandColliders.Array.data[1]
+      value: 
+      objectReference: {fileID: 2047137269}
     - target: {fileID: 4425161077862061679, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: m_CollisionDetection
       value: 2
@@ -23846,6 +23858,18 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 512587598}
+    - target: {fileID: 4995754764441382459, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+      propertyPath: leftHandColliders.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995754764441382459, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+      propertyPath: leftHandColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 2047137270}
+    - target: {fileID: 4995754764441382459, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+      propertyPath: leftHandColliders.Array.data[1]
+      value: 
+      objectReference: {fileID: 2047137270}
     - target: {fileID: 6977161343083614425, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: targetLimb
       value: 
@@ -23903,6 +23927,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+--- !u!136 &2047137269 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 3654824193255821805, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+  m_PrefabInstance: {fileID: 2047137268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &2047137270 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 5741106725246791909, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+  m_PrefabInstance: {fileID: 2047137268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2049075167 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1576488453971394810, guid: a778b631c6253a04899cb31bad047c81, type: 3}

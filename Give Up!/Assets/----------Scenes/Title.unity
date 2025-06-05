@@ -1316,6 +1316,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 60.595, y: 90, z: 90}
+--- !u!1 &387478834 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4585708481314863935, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+  m_PrefabInstance: {fileID: 1136139069}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &387478836 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 3654824193255821805, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+  m_PrefabInstance: {fileID: 1136139069}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &399691531 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 8987061235375819083, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+  m_PrefabInstance: {fileID: 1136139069}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &409153299
 GameObject:
   m_ObjectHideFlags: 0
@@ -3462,6 +3477,22 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1727892009}
+    - target: {fileID: 4269488832253628019, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+      propertyPath: rightForeArm
+      value: 
+      objectReference: {fileID: 387478834}
+    - target: {fileID: 4269488832253628019, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+      propertyPath: rightHandColliders.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4269488832253628019, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+      propertyPath: rightHandColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 387478836}
+    - target: {fileID: 4269488832253628019, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+      propertyPath: rightHandColliders.Array.data[1]
+      value: 
+      objectReference: {fileID: 399691531}
     - target: {fileID: 4902831797668456208, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: targetLimb
       value: 
@@ -3470,6 +3501,22 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1727892009}
+    - target: {fileID: 4995754764441382459, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+      propertyPath: leftForeArm
+      value: 
+      objectReference: {fileID: 1766610954}
+    - target: {fileID: 4995754764441382459, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+      propertyPath: leftHandColliders.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995754764441382459, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+      propertyPath: leftHandColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 1766610956}
+    - target: {fileID: 4995754764441382459, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+      propertyPath: leftHandColliders.Array.data[1]
+      value: 
+      objectReference: {fileID: 1932549410}
     - target: {fileID: 6977161343083614425, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
       propertyPath: targetLimb
       value: 
@@ -6385,6 +6432,16 @@ Transform:
   - {fileID: 684856459}
   m_Father: {fileID: 1312001436}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1766610954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7106778965068409715, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+  m_PrefabInstance: {fileID: 1136139069}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1766610956 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 5741106725246791909, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+  m_PrefabInstance: {fileID: 1136139069}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1776727563
 GameObject:
   m_ObjectHideFlags: 0
@@ -6899,6 +6956,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &1932549410 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 7266990623843390651, guid: ea5b9a4a168ae604787ab2ba9a08d12e, type: 3}
+  m_PrefabInstance: {fileID: 1136139069}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1934416830 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3779745573541866595, guid: 2de09524238d49f459fee773b52870c6, type: 3}

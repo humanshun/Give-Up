@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
     {
         if (cameraY && grabLeftHand && grabRightHand && !editMode)
         {
-            hips.AddForce(0, 300f, 0);
+            hips.AddForce(0, 500f, 0);
         }
     }
     //
